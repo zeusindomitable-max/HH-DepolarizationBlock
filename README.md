@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17618662.svg)](https://doi.org/10.5281/zenodo.17618662)
+
+
 # 🇮🇩 Hodgkin-Huxley Indonesia 2025
 
 **True Hodgkin-Huxley Model with:**
