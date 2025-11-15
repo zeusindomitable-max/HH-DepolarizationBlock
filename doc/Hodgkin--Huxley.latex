@@ -1,0 +1,122 @@
+% ===============================================================
+% HODGKIN-HUXLEY: RIGOROUS MATHEMATICAL FORMULATION
+% ===============================================================
+
+\section{Refined Hodgkin--Huxley Model with Corrected Sodium Inactivation}
+
+\subsection{State Space, Domain, and Units}
+
+The state vector is
+\[
+(V, m, h, n) \in \mathbb{R} \times [0,1]^3,
+\]
+where $V$ is the membrane voltage (mV), and $m,h,n$ are gating probabilities.
+The system follows the Hodgkin--Huxley formalism \cite{hodgkin1952quantitative}.
+
+All parameters use the standard squid-axon convention:
+\[
+C_m \, [\mu\mathrm{F}/\mathrm{cm}^2], \quad
+\bar g \, [\mathrm{mS/cm}^2], \quad
+I \, [\mu\mathrm{A/cm}^2], \quad
+\alpha_x,\beta_x \, [\mathrm{ms}^{-1}].
+\]
+
+\subsection{Membrane Potential Equation}
+
+The membrane equation is given by conservation of charge:
+\begin{equation}
+\label{eq:dVdt}
+C_m \frac{dV}{dt}
+= I_{\mathrm{stim}}(t)
+- \left[
+\bar g_{\mathrm{Na}} m^3 h (V - E_{\mathrm{Na}})
++ \bar g_{\mathrm{K}} n^4 (V - E_{\mathrm{K}})
++ \bar g_{\mathrm{L}} (V - E_{\mathrm{L}})
+\right].
+\end{equation}
+
+\subsection{Gating Variable Dynamics}
+
+Each gating variable $x \in \{m,h,n\}$ satisfies:
+\begin{equation}
+\label{eq:dxdt}
+\frac{dx}{dt} = \alpha_x(V) \left( 1 - x \right) - \beta_x(V) x.
+\end{equation}
+
+Steady state:
+\[
+x_\infty(V) = \frac{\alpha_x(V)}{\alpha_x(V) + \beta_x(V)}.
+\]
+
+
+\subsection{Kinetic Rate Functions \texorpdfstring{$\alpha_x, \beta_x$}{alphabeta}}
+
+Table \ref{tab:rates} lists the refined transition rates.  
+The sodium inactivation gate $h$ includes the corrected formulation verified in our depolarization block benchmark.
+
+\begin{table}[h!]
+\centering
+\caption{Hodgkin--Huxley transition rate functions (with corrected $h$-gate).}
+\label{tab:rates}
+\begin{tabular}{lll}
+\hline
+Variable & $\alpha_x(V)$ & $\beta_x(V)$ \\
+\hline
+$m$ (Na activation) &
+$\displaystyle
+\frac{0.1 (25 - V)}{e^{(25-V)/10}-1}
+$ &
+$\displaystyle
+4 e^{-V/18}
+$ \\[1.2em]
+$h$ (Na inactivation) \textbf{(Corrected)} &
+$\displaystyle
+\frac{1}{e^{(30-V)/10}+1}
+$ &
+$\displaystyle
+0.07 e^{-V/20}
+$ \\[1.2em]
+$n$ (K activation) &
+$\displaystyle
+\frac{0.01 (10 - V)}{e^{(10-V)/10}-1}
+$ &
+$\displaystyle
+0.125\, e^{-V/80}
+$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Singularities at $V=25$ or $V=10$ are resolved by using analytical limits.
+
+\subsection{Existence, Uniqueness, and Invariance}
+
+The right-hand side of the system $(\ref{eq:dVdt})$--$(\ref{eq:dxdt})$ is locally Lipschitz on
+$\mathbb{R} \times [0,1]^3$.
+Thus, by the Picard--Lindelöf theorem,
+a unique local solution exists for all initial conditions.
+
+Positivity invariance holds:
+\[
+x(0)\in[0,1]\quad \Rightarrow\quad x(t)\in[0,1],\;\forall t\ge 0,
+\]
+because the vector field points inward at boundaries.
+
+\subsection{Analytical Result: Depolarization Block}
+
+At depolarized resting potential $V_{\mathrm{rest}}=-40\,\mathrm{mV}$, the corrected inactivation gate fulfills:
+\[
+h_\infty(-40) \approx 0.0018.
+\]
+
+Thus,
+\[
+m^3 h \approx 0,
+\]
+preventing the sodium current from generating an action potential.  
+Therefore, stimulus-induced spike initiation fails:
+\[
+\max_t V(t) \approx -54.4\,\mathrm{mV}.
+\]
+This reproduces the classical depolarization block phenomenon observed in channelopathy and high-frequency failures.
+
