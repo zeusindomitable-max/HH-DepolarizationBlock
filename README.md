@@ -38,7 +38,7 @@ Rate functions (temperature-corrected with ϕ = 1):
 **Kunci kemenangan analitis malam ini:**  
 Ketika Vₘ = –40 mV → h₀ ≈ 0.0018 → Na⁺ channels masuk **deep inactivation** → **depolarization block** terjadi secara fisiologis (FHN tidak mampu mereproduksi ini).
 
-![Depolarization Block](results/depolarized_block.png)
+![Depolarization Block](download10.png)
 
 ## Key Results (15 November 2025)
 
