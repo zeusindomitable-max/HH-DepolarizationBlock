@@ -135,11 +135,17 @@ Even small amounts help cover coffee ☕ and server costs!
 ## Citation (BibTeX)
 
 @software{haritedjamantri_T_HH_2025,
+
   author    = {Hari Tedjamantri},
+  
   title     = {T-HH 2025: Q10-Corrected Hodgkin-Huxley 1952 Model with Quantitative Validation},
+  
   year      = {2025},
+  
   month     = {november},
+  
   doi       = {10.5281/zenodo.17618662},
+  
   url       = {https://doi.org/10.5281/zenodo.17618662}
 }
 
