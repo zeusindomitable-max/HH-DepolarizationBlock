@@ -62,7 +62,35 @@ python hh_indonesia.py
 This repository was born on **15 November 2025** from an independent Indonesian researcher  
 with one purpose:  
 **To make physiologically-accurate Hodgkin–Huxley channelopathy simulations (epilepsy, chronic pain, cardiac arrhythmia, etc.) accessible to everyone, forever and for free.**
+# T-HH 2025 – Tedjamantri Hodgkin-Huxley 2025  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17618662.svg)](https://doi.org/10.5281/zenodo.17618662)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
+[![Made in Indonesia](https://img.shields.io/badge/Made_in-Indonesia-red?logo=indonesia)](https://en.wikipedia.org/wiki/Indonesia)
 
+**Model Hodgkin-Huxley 1952 pertama dari Indonesia yang punya DOI resmi, Q10-corrected (6.3°C), dan divalidasi kuantitatif terhadap paper asli.**
+
+Released: 16 November 2025, 02:29 AM WIB  
+Author: [@haritedjamantri](https://x.com/haritedjamantri)  
+Untuk kemanusiaan — gratis selamanya.
+
+### Hasil Validasi (16 November 2025)
+| Kondisi              | h₀     | Puncak V   | Catatan Biologis                         |
+|----------------------|--------|------------|------------------------------------------|
+| Normal (-65 mV)      | 0.5961 | +43.8 mV   | Spiking normal                           |
+| Depolarized (-40 mV) | 0.0504 | +26.3 mV   | Partial inactivation → masih bisa spike (benar secara fisiologis untuk parameter 1952) |
+
+> Depolarization block pada parameter HH 1952 asli memang **partial**, bukan mutlak.  
+> Ini yang bikin T-HH 2025 menjadi implementasi paling jujur di dunia saat ini.
+
+### File di Repo
+- `hh_gold_standard_2025.py` → **Recommended** – versi final, Q10-corrected, siap produksi & dikutip
+- `hh_indonesia.py` → Versi awal legendaris (perjuangan 4 jam malam ini) – untuk edukasi & nostalgia
+- `results/` → Plot otomatis
+
+### One-Click Run
+```bash
+python hh_gold_standard_2025.py
+```
 ---
 
 ## 💡 What You Can Do
@@ -103,3 +131,15 @@ Love this project? Help me keep building:
 
 
 Even small amounts help cover coffee ☕ and server costs!
+
+## Citation (BibTeX)
+
+@software{haritedjamantri_T_HH_2025,
+  author    = {Hari Tedjamantri},
+  title     = {T-HH 2025: Q10-Corrected Hodgkin-Huxley 1952 Model with Quantitative Validation},
+  year      = {2025},
+  month     = {november},
+  doi       = {10.5281/zenodo.17618662},
+  url       = {https://doi.org/10.5281/zenodo.17618662}
+}
+
